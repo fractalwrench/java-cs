@@ -47,7 +47,7 @@ public class StackTest {
     /**
      * Ensures that popping an empty stack throws an exception
      */
-    @Test//(expected = IllegalStateException.class)
+    @Test(expected = IllegalStateException.class)
     public void emptyPop() throws Exception {
         stack.pop();
     }
