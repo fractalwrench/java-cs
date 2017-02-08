@@ -12,6 +12,7 @@ public class Stack<T> {
     private static final String EMPTY_STACK_MSG = " cannot be called on an Empty Stack!";
 
     private Node<T> top;
+    private int size;
 
     /**
      * Removes the top-most object from the stack and returns it
@@ -27,6 +28,7 @@ public class Stack<T> {
         } else {
             T data = top.data;
             top = top.next;
+            size--;
             return data;
         }
     }
@@ -42,6 +44,7 @@ public class Stack<T> {
         Node<T> node = new Node<>(object);
         node.next = top;
         top = node;
+        size++;
     }
 
     /**
@@ -73,19 +76,12 @@ public class Stack<T> {
     /**
      * Determines the number of objects in the stack
      * <p>
-     * O(n)
+     * O(1)
      *
      * @return the stack's size
      */
     public long size() {
-        Node node = top;
-        int count = 0;
-
-        while (node != null) {
-            node = node.next;
-            count++;
-        }
-        return count;
+        return size;
     }
 
     /**
