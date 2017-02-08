@@ -29,18 +29,23 @@ public class StackTest {
     @Test
     public void testPopPeekPushSize() throws Exception {
         assertEquals(0, stack.size());
-        String data = "test";
-        stack.push(null);
-        stack.push(data);
+
+        String firstObj = "First";
+        String secondObj = "Second";
+        stack.push(firstObj);
+        stack.push(secondObj);
         assertEquals(2, stack.size());
 
-        assertEquals(data, stack.peek());
+        assertEquals(secondObj, stack.peek());
         assertEquals(2, stack.size());
 
-        assertEquals(data, stack.pop());
+        assertEquals(secondObj, stack.pop());
         assertEquals(1, stack.size());
 
-        stack.pop();
+        assertEquals(firstObj, stack.peek());
+        assertEquals(1, stack.size());
+
+        assertEquals(firstObj, stack.pop());
         assertEquals(0, stack.size());
     }
 
@@ -79,12 +84,11 @@ public class StackTest {
 
         for (int k = 0; k < ELEMENT_COUNT; k++) {
             integerStack.push(k);
+            assertEquals(k + 1, integerStack.size());
         }
 
-        assertEquals(ELEMENT_COUNT, integerStack.size());
         assertEquals(ELEMENT_COUNT - 1, (int) integerStack.peek());
         assertEquals(ELEMENT_COUNT - 1, (int) integerStack.pop());
-        assertEquals(ELEMENT_COUNT - 1, (int) integerStack.size());
     }
 
 }
