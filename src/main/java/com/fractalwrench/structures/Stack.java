@@ -70,7 +70,7 @@ public class Stack<T> {
      * @return true if the stack is empty
      */
     public boolean isEmpty() {
-        return top == null;
+        return size == 0;
     }
 
     /**
@@ -80,7 +80,7 @@ public class Stack<T> {
      *
      * @return the stack's size
      */
-    public long size() {
+    public int size() {
         return size;
     }
 

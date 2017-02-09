@@ -9,7 +9,6 @@ public class SinglyLinkedListTest {
 
     private static final String TEST = "test";
     private static final String SECOND = "second";
-    private static final int[] ILLEGAL_INDICES = new int[]{-3, 0, 57};
 
     private SinglyLinkedList<String> linkedList;
 
@@ -25,11 +24,11 @@ public class SinglyLinkedListTest {
 
         for (int k = 0; k < limit; k++) {
             linkedList.insertFirst(TEST);
-            assertEquals(k, linkedList.size());
+            assertEquals(k + 1, linkedList.size());
         }
         for (int k = limit; k > 0; k--) {
             linkedList.deleteLast();
-            assertEquals(k, linkedList.size());
+            assertEquals(k - 1, linkedList.size());
         }
     }
 
@@ -90,7 +89,7 @@ public class SinglyLinkedListTest {
 
     @Test
     public void insertAtIllegalIndex() throws Exception {
-        for (int illegal : ILLEGAL_INDICES) {
+        for (int illegal : new int[]{-3, -1, 1, 57}) {
             try {
                 linkedList.insertAtIndex(illegal, "test");
                 fail("Insertion was not prevented at index " + illegal);
@@ -103,9 +102,9 @@ public class SinglyLinkedListTest {
 
     @Test
     public void deleteAtIllegalIndex() throws Exception {
-        for (int illegal : ILLEGAL_INDICES) {
+        for (int illegal : new int[]{-3, -1, 0, 1, 57}) {
             try {
-                linkedList.insertAtIndex(illegal, "test");
+                linkedList.deleteFromIndex(illegal);
                 fail("Deletion was not prevented at index " + illegal);
             }
             catch (IllegalArgumentException ignored) {
