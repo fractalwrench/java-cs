@@ -79,9 +79,7 @@ public class StringBuilder {
      * Clears the buffer of any characters it is holding
      */
     public void clear() {
-        for (int k = 0; k < values.length; k++) {
-            values[k] = '\0'; // default to null terminator
-        }
+        values = new char[DEFAULT_CAPACITY];
         size = 0;
     }
 
