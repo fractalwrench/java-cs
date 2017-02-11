@@ -1,7 +1,7 @@
 package com.fractalwrench.algorithms.cci.ch1;
 
 /**
- * Cracking the Coding Interview Q1.2
+ * Cracking the Coding Interview Q1.3
  */
 public class UrlifySolution {
 
