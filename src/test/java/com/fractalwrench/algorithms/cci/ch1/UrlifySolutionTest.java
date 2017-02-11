@@ -4,7 +4,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
 
 public class UrlifySolutionTest {
 
@@ -18,8 +17,8 @@ public class UrlifySolutionTest {
     @Test
     public void getUrlifiedString() throws Exception {
         assertArrayEquals(new char[]{}, solution.getUrlifiedString(new char[]{}));
-        assertEquals("%20".toCharArray(), solution.getUrlifiedString(" ".toCharArray()));
-        assertEquals("this is a  test".toCharArray(), solution.getUrlifiedString("this%20is%20a%20%20test".toCharArray()));
+        assertArrayEquals("%20a".toCharArray(), solution.getUrlifiedString(" a  ".toCharArray()));
+        assertArrayEquals("this%20is%20a%20test".toCharArray(), solution.getUrlifiedString("this is a test      ".toCharArray()));
     }
 
 }
