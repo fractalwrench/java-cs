@@ -19,8 +19,8 @@ public class PalindromePermutationSolutionTest {
     public void isPermutationOfPalindrome() throws Exception {
         assertFalse(solution.isPermutationOfPalindrome(null));
         assertFalse(solution.isPermutationOfPalindrome(""));
-        assertFalse(solution.isPermutationOfPalindrome("aa"));
         assertFalse(solution.isPermutationOfPalindrome("abc"));
+        assertTrue(solution.isPermutationOfPalindrome("aa"));
         assertTrue(solution.isPermutationOfPalindrome("abcabc "));
         assertTrue(solution.isPermutationOfPalindrome("dog god"));
     }

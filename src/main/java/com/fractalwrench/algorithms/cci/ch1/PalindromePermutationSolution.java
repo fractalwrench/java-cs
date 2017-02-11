@@ -1,5 +1,8 @@
 package com.fractalwrench.algorithms.cci.ch1;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Cracking the Coding Interview Q1.4
  */
@@ -11,7 +14,27 @@ public class PalindromePermutationSolution {
      * @return true if a permutation, otherwise false
      */
     public boolean isPermutationOfPalindrome(String input) {
-        return false;
+        if (isInvalidParam(input)) {
+            return false;
+        }
+
+        char[] values = input.toCharArray();
+        Map<Character, Character> map = new HashMap<>();
+
+        // add each char to a hash table, then remove it if already present.
+        // palindromes by definition have even numbers of each character
+        // (with the exception of 1 char if an odd length).
+        // therefore if the map size if > 1, it cannot be a permutation of a palindrome
+
+        for (char value : values) {
+            if (map.containsKey(value)) {
+                map.remove(value);
+            }
+            else {
+                map.put(value, value);
+            }
+        }
+        return map.size() <= 1;
     }
 
     /**
@@ -20,7 +43,7 @@ public class PalindromePermutationSolution {
      * @return true if a palindrome, otherwise false
      */
     boolean isPalindrome(String input) {
-        if (input == null || input.length() <= 1) {
+        if (isInvalidParam(input)) {
             return false;
         }
 
@@ -32,5 +55,9 @@ public class PalindromePermutationSolution {
             }
         }
         return true;
+    }
+
+    private boolean isInvalidParam(String input) {
+        return input == null || input.length() <= 1;
     }
 }
