@@ -18,13 +18,38 @@ public class OneAwaySolution {
         if (a == null || b == null) {
             throw new IllegalArgumentException("Cannot check difference on a null object reference");
         }
-        int diff = a.length() - b.length();
 
-        if (a.equals(b) || (diff != -1 && diff != 1)) { // only one char can have changed...
-            return false;
+        // 1. check whether each element matches i.e. a[n] == b[n]
+        // 2. if no match, increment a counter, and check for
+        //      (A) Insertion/Deletion: a[n+1] == b[n] or a[n] == b[n + 1]
+        //      (B) Replacement a[n+1] == b[n+1]
+        //      (C) return false
+        // 3. If counter >1, return false
+
+        char[] firstAry = a.toCharArray();
+        char[] secondAry = b.toCharArray();
+
+        int diff = 0;
+
+        int firstAryLen = firstAry.length;
+        int secondAryLen = secondAry.length;
+
+        for (int k = 0, m = 0; k < firstAryLen && m < secondAryLen; k++, m++) {
+            if (diff > 1) {
+                return false;
+            }
+            if (firstAry[k] != secondAry[m]) {
+                diff++;
+
+                // check for indel, and skip to next char if so
+                if (m + 1 < secondAryLen && firstAry[k] == secondAry[m + 1]) {
+                    m++;
+                } else if (k + 1 < firstAryLen && firstAry[k + 1] == secondAry[m]) {
+                    k++;
+                }
+            }
         }
-
-        return false;
+        return diff == 1;
     }
 
 }
