@@ -1,5 +1,8 @@
 package com.fractalwrench.algorithms.cci.ch1;
 
+/**
+ * Cracking the Coding Interview Q1.6
+ */
 public class StringCompressionSolution {
 
     /**
