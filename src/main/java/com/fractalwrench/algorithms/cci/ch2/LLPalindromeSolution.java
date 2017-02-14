@@ -1,7 +1,7 @@
 package com.fractalwrench.algorithms.cci.ch2;
 
-import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.Stack;
 
 /**
  * Cracking the Coding Interview Q2.6
@@ -18,7 +18,17 @@ public class LLPalindromeSolution {
             return false;
         }
 
-        return false;
+        Stack<String> stack = new Stack<>();
+
+        for (String s : linkedList) { // add each item to a stack
+            stack.push(s);
+        }
+        for (String s : linkedList) { // pop the stack (reads the ll in reverse)
+            if (!stack.pop().equals(s)) {
+                return false;
+            }
+        }
+        return true;
     }
 
 }
